@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/headphone"
+        android:icon="@drawable/ic_baseline_headphones_24"
+        android:title="Headphone" />
+
+    <item
+        android:id="@+id/grope"
+        android:icon="@drawable/ic_baseline_group_work_24"
+        android:title="Groupe" />
+
+
+</menu>
