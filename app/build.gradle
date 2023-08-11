@@ -16,16 +16,67 @@ android {
         targetSdk 33
         versionCode 1
         versionName "1.0"
-        multiDexEnabled=true
+        multiDexEnabled = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    flavorDimensions "default"
+
+    productFlavors {
+
+        free {
+
+            applicationIdSuffix ".free"
+            versionNameSuffix "-free"
+            dimension "default"
+        }
+
+        paid {
+
+            applicationIdSuffix ".paid"
+            versionNameSuffix "-paid"
+            dimension "default"
+
         }
     }
+
+    buildTypes {
+
+        release {
+            minifyEnabled false
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        dev {
+
+            minifyEnabled false
+            debuggable true
+        }
+
+
+    }
+
+    sourceSets {
+        free{
+            java {
+                srcDirs("src/free/java")
+            }
+            resources {
+                srcDirs("src/free/res")
+            }
+        }
+        paid{
+
+            java {
+                srcDirs("src/paid/java")
+            }
+            resources {
+                srcDirs("src/paid/res")
+            }
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -46,7 +97,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    def hilt_version="2.44"
+    def hilt_version = "2.44"
 
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
@@ -58,7 +109,6 @@ dependencies {
     //Viewmodel ktx
     implementation "androidx.fragment:fragment-ktx:1.5.7"
     implementation "androidx.activity:activity-ktx:1.7.1"
-
 
 
     //retrofit
